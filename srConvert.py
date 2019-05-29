@@ -7,7 +7,7 @@ thisdir = os.getcwd()
 pattern = ".wav"
 samplerate = 32000
 subdir = "converted"
-reanme = True
+rename = True
 
 def main():
 	if len(sys.argv) > 1:
@@ -43,12 +43,14 @@ def main():
 
 	print(str(len(entriesList)-1) + " Samples converted")
 
+	numberList = ["%.2d" % i for i in range(len(entriesList))]
+
 	if rename == True:
 		fileList = [x for x in os.listdir(thisdir + "\\" + subdir + "\\") if x.endswith(".wav")]	
 		i = 0
 		for selections in fileList:
 			if selections != '':
-				os.rename(thisdir + "\\" + subdir + "\\" + selections, thisdir + "\\" + subdir + "\\" + str(i) + ".wav")
+				os.rename(thisdir + "\\" + subdir + "\\" + selections, thisdir + "\\" + subdir + "\\" + numberList[i] + ".wav")
 				i +=1	
 
 if __name__ == "__main__":
